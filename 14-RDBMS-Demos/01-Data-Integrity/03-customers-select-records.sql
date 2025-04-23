@@ -1,0 +1,1 @@
+SELECT customer_name,customer_email FROM customers WHERE customer_id=101;
