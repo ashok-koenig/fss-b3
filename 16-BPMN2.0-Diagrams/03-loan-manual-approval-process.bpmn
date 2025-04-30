@@ -79,14 +79,18 @@
         <di:waypoint x="353" y="210" />
         <di:waypoint x="358" y="125" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1q9uajn_di" bpmnElement="Flow_1q9uajn">
-        <di:waypoint x="218" y="250" />
-        <di:waypoint x="300" y="250" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_12rakdg_di" bpmnElement="TextAnnotation_12rakdg">
         <dc:Bounds x="120" y="90" width="180" height="60" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0i79xsk_di" bpmnElement="TextAnnotation_0i79xsk">
+        <dc:Bounds x="310" y="80" width="220" height="45" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1q9uajn_di" bpmnElement="Flow_1q9uajn">
+        <di:waypoint x="218" y="250" />
+        <di:waypoint x="300" y="250" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1wkm2iw_di" bpmnElement="Flow_1wkm2iw">
         <di:waypoint x="400" y="250" />
         <di:waypoint x="485" y="250" />
@@ -99,10 +103,6 @@
           <dc:Bounds x="536" y="123" width="47" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_0i79xsk_di" bpmnElement="TextAnnotation_0i79xsk">
-        <dc:Bounds x="310" y="80" width="220" height="45" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_15xbclh_di" bpmnElement="Flow_15xbclh">
         <di:waypoint x="510" y="275" />
         <di:waypoint x="510" y="340" />

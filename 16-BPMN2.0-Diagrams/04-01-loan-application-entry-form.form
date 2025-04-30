@@ -1,0 +1,66 @@
+{
+  "components": [
+    {
+      "text": "# Loan Application Entry Form",
+      "type": "text",
+      "layout": {
+        "row": "Row_1flmco7",
+        "columns": null
+      },
+      "id": "Field_07gwlcq"
+    },
+    {
+      "label": "Applicant Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_05qmu1i",
+        "columns": null
+      },
+      "id": "Field_0u2zks0",
+      "key": "applicant_name",
+      "validate": {
+        "required": true,
+        "minLength": 3,
+        "maxLength": 50
+      }
+    },
+    {
+      "label": "Credit Score",
+      "type": "number",
+      "layout": {
+        "row": "Row_12y3uun",
+        "columns": null
+      },
+      "id": "Field_09uei6e",
+      "key": "credit_score",
+      "validate": {
+        "required": true,
+        "min": 0,
+        "max": 1000
+      }
+    },
+    {
+      "label": "Loan Amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_0okjdep",
+        "columns": null
+      },
+      "id": "Field_0pirub6",
+      "key": "loan_amount",
+      "validate": {
+        "required": true,
+        "min": 1000
+      }
+    }
+  ],
+  "type": "default",
+  "id": "B3_04_01_loan_application_entry",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.33.1"
+  },
+  "schemaVersion": 18
+}
