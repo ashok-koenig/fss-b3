@@ -1,0 +1,92 @@
+{
+  "components": [
+    {
+      "text": "# Loan Application Entry Form",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ilk0ci",
+        "columns": null
+      },
+      "id": "Field_0j6rtuw"
+    },
+    {
+      "label": "Applicant Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0sxsf8c",
+        "columns": null
+      },
+      "id": "Field_1iq6st3",
+      "key": "applicant_name",
+      "validate": {
+        "required": true,
+        "minLength": 3
+      }
+    },
+    {
+      "label": "Credit Score",
+      "type": "number",
+      "layout": {
+        "row": "Row_0qrskpq",
+        "columns": null
+      },
+      "id": "Field_18mj7x2",
+      "key": "credit_score",
+      "validate": {
+        "required": true,
+        "min": 0,
+        "max": 1000
+      }
+    },
+    {
+      "label": "Loan Type",
+      "values": [
+        {
+          "label": "Home Loan",
+          "value": "home"
+        },
+        {
+          "label": "Personal Loan",
+          "value": "personal"
+        },
+        {
+          "label": "Car Loan",
+          "value": "car"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0i47jqi",
+        "columns": null
+      },
+      "id": "Field_1sfobhx",
+      "key": "loan_type",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Loan Amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_01k7b78",
+        "columns": null
+      },
+      "id": "Field_0r13tyz",
+      "key": "loan_amount",
+      "validate": {
+        "required": true,
+        "min": 1000
+      }
+    }
+  ],
+  "type": "default",
+  "id": "B3_05_01_loan_application_entry",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.33.1"
+  },
+  "schemaVersion": 18
+}
