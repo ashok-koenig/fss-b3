@@ -1,0 +1,65 @@
+{
+  "components": [
+    {
+      "text": "# Retry Loan Review with Documents",
+      "type": "text",
+      "layout": {
+        "row": "Row_1wo7t84",
+        "columns": null
+      },
+      "id": "Field_0vcm4f7"
+    },
+    {
+      "label": "Applicant Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0cjr5pm",
+        "columns": null
+      },
+      "id": "Field_15w930q",
+      "key": "applicant_name",
+      "readonly": true
+    },
+    {
+      "label": "Credit Score",
+      "type": "number",
+      "layout": {
+        "row": "Row_1qhuvm3",
+        "columns": null
+      },
+      "id": "Field_1stcj0l",
+      "key": "credit_score",
+      "readonly": true
+    },
+    {
+      "label": "Loan Amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_0ltmino",
+        "columns": null
+      },
+      "id": "Field_0acyzbc",
+      "key": "loan_amount",
+      "readonly": true
+    },
+    {
+      "label": "Loan application and documents reviewed and approved",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_11fmxqw",
+        "columns": null
+      },
+      "id": "Field_1rqcgut",
+      "key": "approved"
+    }
+  ],
+  "type": "default",
+  "id": "B3_08_01_retry_review_form",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.33.1"
+  },
+  "schemaVersion": 18
+}
