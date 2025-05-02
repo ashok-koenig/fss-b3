@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_05i6hfw" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.33.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:collaboration id="Collaboration_0hu4bc4">
+    <bpmn:participant id="Participant_0upxaju" name="Loan approval process" processRef="B3_07_Loan_approval_process_with_call_activity" />
+    <bpmn:textAnnotation id="TextAnnotation_10mhibv">
+      <bpmn:text>Manual loan application using user task and Camunda form</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_14q0unj" associationDirection="None" sourceRef="Activity_1804ccm" targetRef="TextAnnotation_10mhibv" />
+  </bpmn:collaboration>
+  <bpmn:process id="B3_07_Loan_approval_process_with_call_activity" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1rnts1r">
+      <bpmn:lane id="Lane_1yd306e" name="Car loan process">
+        <bpmn:flowNodeRef>Activity_1r11wsd</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1etkhem" name="Home loan process">
+        <bpmn:flowNodeRef>Activity_1pr0we9</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0nbcp53" name="Personal Loan process">
+        <bpmn:flowNodeRef>Activity_1804ccm</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0ayuipr</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1u1ons7</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:userTask id="Activity_1804ccm" name="Manual loan application entry">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="B3_07_01_loan_application_entry" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0vu590c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lp5slt</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:startEvent id="StartEvent_1" name="Start loan approval process">
+      <bpmn:outgoing>Flow_0vu590c</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gateway_0ayuipr">
+      <bpmn:incoming>Flow_0lp5slt</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qg5ua1</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0wxtg4c</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0svuf6g</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0vu590c" sourceRef="StartEvent_1" targetRef="Activity_1804ccm" />
+    <bpmn:sequenceFlow id="Flow_0lp5slt" sourceRef="Activity_1804ccm" targetRef="Gateway_0ayuipr" />
+    <bpmn:sequenceFlow id="Flow_0qg5ua1" name="Personal Loan" sourceRef="Gateway_0ayuipr" targetRef="Activity_1u1ons7">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=loan_type="personal"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0wxtg4c" name="Home Loan" sourceRef="Gateway_0ayuipr" targetRef="Activity_1pr0we9">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=loan_type ="home"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0svuf6g" name="Car Loan" sourceRef="Gateway_0ayuipr" targetRef="Activity_1r11wsd">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=loan_type="car"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:callActivity id="Activity_1u1ons7" name="Processing Person Loan">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="B3_07_02_person_loan_approval_process" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0qg5ua1</bpmn:incoming>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Activity_1pr0we9" name="Processing Home Loan">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="B3_07_03_home_loan_approval_process" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0wxtg4c</bpmn:incoming>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Activity_1r11wsd" name="Processing Car Loan">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="B3_07_04_car_loan_approval_process" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0svuf6g</bpmn:incoming>
+    </bpmn:callActivity>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0hu4bc4">
+      <bpmndi:BPMNShape id="Participant_0upxaju_di" bpmnElement="Participant_0upxaju" isHorizontal="true">
+        <dc:Bounds x="120" y="110" width="770" height="490" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0nbcp53_di" bpmnElement="Lane_0nbcp53" isHorizontal="true">
+        <dc:Bounds x="150" y="110" width="740" height="200" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1etkhem_di" bpmnElement="Lane_1etkhem" isHorizontal="true">
+        <dc:Bounds x="150" y="310" width="740" height="140" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1yd306e_di" bpmnElement="Lane_1yd306e" isHorizontal="true">
+        <dc:Bounds x="150" y="450" width="740" height="150" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hfbw0b_di" bpmnElement="Activity_1804ccm">
+        <dc:Bounds x="370" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="262" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="238" y="205" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0ayuipr_di" bpmnElement="Gateway_0ayuipr" isMarkerVisible="true">
+        <dc:Bounds x="545" y="155" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1crx3xa_di" bpmnElement="Activity_1u1ons7">
+        <dc:Bounds x="710" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0z840rz_di" bpmnElement="Activity_1pr0we9">
+        <dc:Bounds x="710" y="340" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1abxqrv_di" bpmnElement="Activity_1r11wsd">
+        <dc:Bounds x="720" y="490" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0vu590c_di" bpmnElement="Flow_0vu590c">
+        <di:waypoint x="298" y="180" />
+        <di:waypoint x="370" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lp5slt_di" bpmnElement="Flow_0lp5slt">
+        <di:waypoint x="470" y="180" />
+        <di:waypoint x="545" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qg5ua1_di" bpmnElement="Flow_0qg5ua1">
+        <di:waypoint x="595" y="180" />
+        <di:waypoint x="710" y="180" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="613" y="153" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wxtg4c_di" bpmnElement="Flow_0wxtg4c">
+        <di:waypoint x="570" y="205" />
+        <di:waypoint x="570" y="380" />
+        <di:waypoint x="710" y="380" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="620" y="356" width="57" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0svuf6g_di" bpmnElement="Flow_0svuf6g">
+        <di:waypoint x="570" y="205" />
+        <di:waypoint x="570" y="530" />
+        <di:waypoint x="720" y="530" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="626" y="503" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_10mhibv_di" bpmnElement="TextAnnotation_10mhibv">
+        <dc:Bounds x="270" y="260" width="240" height="50" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_14q0unj_di" bpmnElement="Association_14q0unj">
+        <di:waypoint x="378" y="220" />
+        <di:waypoint x="336" y="260" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
