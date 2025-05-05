@@ -11,6 +11,7 @@ public class Customer {
 
     String customerName;
     Double creditScore;
+    String documents;
 
     public Customer() {
     }
@@ -37,5 +38,13 @@ public class Customer {
 
     public void setCreditScore(Double creditScore) {
         this.creditScore = creditScore;
+    }
+
+    public String getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(String documents) {
+        this.documents = documents;
     }
 }
