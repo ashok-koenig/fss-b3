@@ -85,3 +85,14 @@ kubectl port-forward deployment/webapp 80:80
 kubectl scale deployment webapp --replicas 2
 kubectl scale deployment webapp --replicas 4
 ```
+### Test how Kubernetes maintain the desired state
+```
+kubectl get pods
+kubectl delete pod <any-pod-name>
+kubectl get pods
+```
+### Auto scaling based of CPU utilization (HPA)
+```
+kubectl autoscale deployment webapp --cpu-percent=80 --min=5 --max=10
+kubectl get hpa
+```
