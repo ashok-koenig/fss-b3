@@ -19,6 +19,8 @@ kubectl run my-webapp-pod --image=ashokkoenig/my-webapp
 ```
 kubectl port-forward pod/my-webapp-pod 80:80
 ```
+- Test the web app at http://localhost using web browser.
+- use ``` Ctrl + C ``` to stop port forward
 ### Detailed information about a pod
 ```
 kubectl describe pod my-webapp-pod
