@@ -1,6 +1,6 @@
 # Steps to Create Docker image and run the container for Spring boot App
 ### 1. Create a Spring boot app
-### 2. Package the spring boot app to generate *.jat* file for the app
+### 2. Package the spring boot app to generate *.jar* file for the app
 - Open a terminal/cmd in spring boot app root directory and run the following command
 ```
 mvnw clean package

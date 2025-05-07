@@ -50,7 +50,7 @@ docker unpause my-ubuntu
 docker stop my-ubuntu
 docker ps -a
 docker start my-ubuntu
-docker start my-ubuntu
+docker restart my-ubuntu
 ```
 ### stop and remove the container
 ```
